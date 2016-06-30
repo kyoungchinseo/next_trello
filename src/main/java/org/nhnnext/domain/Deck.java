@@ -17,38 +17,21 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Board {
+public class Deck {
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="BOARD_ID")
+	@Column(name="DECK_ID")
 	private long id;
 	
-	@Column(name="title", length=100, nullable=false)
+	@Column(name="title", length=50, nullable=false)
 	private String title;
 	
-	@Column(name="createdDate", nullable=true)
+	@Column(name="createdDate", nullable=false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdDate;
 	
 	@OneToMany
-	@JoinColumn(name="BOARD_ID")
-	private List<Deck> decks;
-	
-	@OneToMany
-	@JoinColumn(name="BOARD_ID")
-	private List<User> members;
-
-	public Board() {
-		
-	}
-	
-	public Board(String title) {
-		this.title = title;
-	}
-	
-	
-	
-	
-	
+	@JoinColumn(name="DECK_ID")
+	private List<Card> cards;
 	
 }
