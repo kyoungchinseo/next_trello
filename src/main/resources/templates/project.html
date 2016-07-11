@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
+      <meta charset="UTF-8"/>
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
       <link type="text/css" rel="stylesheet" href="css/projectMain.css"  media="screen,projection"/>    
@@ -11,16 +12,17 @@
         <div id="my_board">My Boards</div>
         <ul id="boards_list">
         <tr th:each="board : ${boards}">
-          <li class="board project_1 waves-effect waves-light btn" th:text="${board.title}"></li>
+          <li class="board project_1 waves-effect waves-light btn" th:value="${board.id}" th:text="${board.title}"></li>
         </tr>
              <div class="add_project not_sortable" >
                <a class="btn-floating btn-large waves-effect waves-light red add_project_btn">
                       <i class="material-icons">add</i>
                 </a>
-                  <form class="add_project_form">
+                  <form class="add_project_form"  th:action="@{/create}" th:object="${boardForm}" method="post">
                     <div class="input-field col s12">
-                        <input id="add_project" type="text" class="validate">
+                        <input id="add_project" type="text" class="validate" th:field="*{title}"/>
                           <label for="list_name">Add a Project...</label></br>
+                        <!--    <input class="waves-effect waves-light btn save blue-grey lighten-5" type="submit" value="save"> -->
                           <a class="waves-effect waves-light btn save blue-grey lighten-5">save</a>
                           <a class="waves-effect waves-light btn cancel blue-grey lighten-5">cancel</a>
                     </div>
