@@ -18,6 +18,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.util.MimeType;
 import org.thymeleaf.dialect.IDialect;
+import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.context.SpringContextUtils;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
@@ -63,7 +64,7 @@ public class Thymeleaf3AutoConfiguration {
     }
 
     @Autowired(required = false)
-    private final Collection<IDialect> dialects = Collections.emptySet();
+    private final Collection<IDialect> dialects = Collections.singletonList(new SpringSecurityDialect());
 
     @Autowired
     private final Collection<ITemplateResolver> templateResolvers =

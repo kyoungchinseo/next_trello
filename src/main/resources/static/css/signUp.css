@@ -37,16 +37,23 @@
 }
 
 .login_form_wrapper .btn_area{
+  margin: 0 auto;
+  width: 300px;
+  padding: 0 0 0 0px;
+}
+
+/* .login_form_wrapper .btn_area{
   margin: 2em auto 0 auto;
   width: 300px;
-}
+} */
 
 .login_form_wrapper .btn_area .signUp_btn{
   width: 100px;
   padding: 5px;
-  margin: 0 auto;
+  margin: 0 100px;
   text-align: center;
   color: rgba(0,0,0,.5);
   cursor: pointer;
   font-weight: normal;
 }
+

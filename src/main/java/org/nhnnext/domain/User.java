@@ -1,28 +1,51 @@
 package org.nhnnext.domain;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
 
 import lombok.Data;
 
 @Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="USER_TYPE", discriminatorType=DiscriminatorType.STRING) 
 @Data
-public class User {
+public abstract class User {
+	
+	public static final GuestUser GUEST_USER = new GuestUser();
+	
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="USER_ID")
 	private long id;
 	
-	@Column(name="userName", length=50, nullable=false)
-	private String userName;
+	private String userId;
 	
-	@Column(name="email", length=50, nullable=false)
 	private String email;
 	
-	@Column(name="password", length=50,nullable=false)
-	private String password;
+	public User() {	
+	}
+	
+	public User(String userId, String email) {
+		this.userId = userId; // username
+		this.email = email;
+	}
+	
+	public boolean isGuestUser() {
+		return false;
+	}
+	
+	private static class GuestUser extends User {
+		@Override
+		public boolean isGuestUser() {
+			return true;
+		}
+	}
 	
 }

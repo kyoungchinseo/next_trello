@@ -1,5 +1,6 @@
 package org.nhnnext.web;
 
+import java.security.Principal;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import org.nhnnext.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -36,8 +38,13 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
-	public String projectMain(Model model) {
+	public String projectMain(@AuthenticationPrincipal Principal principal, Model model) {
 		log.info("count: " + boardRepository.count());
+		log.debug("login user : {}", principal);
+		if (principal == null) {
+			return "login";
+		}
+		
 		if (boardRepository.count() <= 0 ) {
 			boardRepository.save(new Board("First Project"));
 			boardRepository.save(new Board("Second Project"));
