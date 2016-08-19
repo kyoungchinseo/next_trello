@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface BoardRepository extends CrudRepository <Board, Long>{
 	//@Cacheable("Boards")
-	@Cacheable("empcache") 
+	//@Cacheable("empcache") 
 	List<Board> findAll();
 }

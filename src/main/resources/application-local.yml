@@ -13,10 +13,10 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5Dialect
     
   datasource:
-    url: jdbc:mysql://localhost/srello
+    url: jdbc:mysql://localhost/trellodb
     driverClassName: com.mysql.jdbc.Driver
-    username: slipp
-    password: password
+    username: trellouser
+    password: trello!!@@##
     validationQuery: SELECT 1
     
   resources:
