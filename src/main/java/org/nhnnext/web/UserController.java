@@ -1,8 +1,13 @@
 package org.nhnnext.web;
 
+import java.security.Principal;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import org.nhnnext.domain.Board;
 import org.nhnnext.domain.BoardForm;
 import org.nhnnext.domain.BoardRepository;
+import org.nhnnext.domain.GitHubUserRepository;
 import org.nhnnext.domain.TrelloUser;
 import org.nhnnext.domain.TrelloUserRepository;
 import org.slf4j.Logger;
@@ -21,6 +26,7 @@ public class UserController {
 	
 	@Autowired
 	private TrelloUserRepository userRepository;
+	
 	
 	@Autowired
 	private BoardRepository boardRepository;
@@ -46,7 +52,7 @@ public class UserController {
 			boardRepository.save(new Board("First Project"));
 			boardRepository.save(new Board("Second Project"));
 		}
-		log.info("count: " + boardRepository.count());
+		log.info("board count: " + boardRepository.count());
 		model.addAttribute("boards",boardRepository.findAll());
 		return "project";
 	}
@@ -66,6 +72,15 @@ public class UserController {
 		userRepository.save(user);
 		
 		return "/login";
+	}
+	
+//	
+	@RequestMapping({ "/user", "/me" })
+	public Map<String, String> user(Principal principal) {
+		System.out.println("user request");
+		Map<String, String> map = new LinkedHashMap<>();
+		map.put("name", principal.getName());
+		return map;
 	}
 	
 	

@@ -3,7 +3,9 @@ package org.nhnnext.domain;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
+import lombok.Data;
 
+@Data
 @Entity
 @DiscriminatorValue(value = UserType.Values.GITHUB)
 public class GitHubUser extends User{

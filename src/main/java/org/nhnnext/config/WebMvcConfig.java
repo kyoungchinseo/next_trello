@@ -18,4 +18,6 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     public LoginUserHandlerMethodArgumentResolver loginUserHandlerMethodArgumentResolver() {
     	return new LoginUserHandlerMethodArgumentResolver();
     }
+    
+    
 }

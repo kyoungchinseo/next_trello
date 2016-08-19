@@ -40,6 +40,7 @@ public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgu
 		
 		if (authentication instanceof OAuth2Authentication) {
 			String principal = (String)authentication.getPrincipal();
+			LOGGER.info("++++++++++++++++++++++++++++++");
 			LOGGER.debug("login principal : {}", principal);
 			return gitHubUserRepository.findByUserId(principal);
 		} else {

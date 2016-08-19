@@ -19,7 +19,7 @@ var TODO = (function (window){
 	
 	function login_githup() {
 		console.log("GITHUB");
-		var url = "/github/login";
+		var url = "/login/github";
 		$(location).attr('href',url);
 	}
 
