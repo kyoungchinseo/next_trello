@@ -1,0 +1,69 @@
+spring:
+  profiles: local
+  profiles.include: logging-debug
+  thymeleaf:
+    cache: false
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    
+  datasource:
+    url: jdbc:mysql://localhost/trellodb
+    driverClassName: com.mysql.jdbc.Driver
+    username: trellouser
+    password: trello!!@@##
+    validationQuery: SELECT 1
+    
+  resources:
+    chain:
+      enabled: true
+
+
+flyway:
+  enabled: true
+  encoding: UTF-8
+  user: trellouser
+  password: trello!!@@##
+
+logging:
+  files: /logs/application.log
+  level: DEBUG
+
+security:
+  oauth2:
+    sso:
+      login-path: /user/login
+      
+
+github:
+  client:
+    clientId: bd1c0a783ccdd1c9b9e4
+    clientSecret: 1a9030fbca47a5b2c28e92f19050bb77824b5ad1
+    accessTokenUri: https://github.com/login/oauth/access_token
+    userAuthorizationUri: https://github.com/login/oauth/authorize
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://api.github.com/user
+  
+facebook:
+  client:
+    clientId: 233668646673605
+    clientSecret: 33b17e044ee6a4fa383f46ec6e28ea1d
+    accessTokenUri: https://graph.facebook.com/oauth/access_token
+    userAuthorizationUri: https://www.facebook.com/dialog/oauth
+    tokenName: oauth_token
+    authenticationScheme: query
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://graph.facebook.com/me
+
+#  datasource:
+#    url: jdbc:h2:mem:trello
+#    driver-class-name: org.h2.Driver
+#    username: sa
+#    password:

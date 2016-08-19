@@ -1,0 +1,48 @@
+spring:
+  profiles: production
+  profiles.include: logging-info
+  thymeleaf:
+    cache: false
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        ddl-auto: validate
+  datasource:
+    url: jdbc:mysql://localhost/trellodb
+    driverClassName: com.mysql.jdbc.Driver
+    username: trellouser
+    password: trello!!@@##
+    
+  resources:
+    chain:
+      enabled: true
+
+logging:
+  level: 
+
+flyway:
+  enabled: true
+  encoding: UTF-8
+  user: trellouser
+  password: trello!!@@##
+
+logging:
+  files: /logs/application.log
+  level: INFO
+
+github:
+  client:
+    clientId: bd1c0a783ccdd1c9b9e4
+    clientSecret: 1a9030fbca47a5b2c28e92f19050bb77824b5ad1
+    accessTokenUri: https://github.com/login/oauth/access_token
+    userAuthorizationUri: https://github.com/login/oauth/authorize
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://api.github.com/user
+  
+
+
+
+
