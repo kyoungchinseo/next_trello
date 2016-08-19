@@ -1,5 +1,7 @@
 package org.nhnnext.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -17,7 +19,7 @@ import lombok.Data;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="USER_TYPE", discriminatorType=DiscriminatorType.STRING) 
 @Data
-public abstract class User {
+public abstract class User implements Serializable {
 	
 	public static final GuestUser GUEST_USER = new GuestUser();
 	

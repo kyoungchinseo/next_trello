@@ -1,5 +1,6 @@
 package org.nhnnext.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +18,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Board {
+public class Board implements Serializable {
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="BOARD_ID")
